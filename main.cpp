@@ -19,20 +19,7 @@ int main()
     avl.insertNode(intv_five);
 
     cout << "INORDER : \n";
-    //avl.breadthFirst(avl.getRoot());
     avl.inorder(avl.getRoot());
-    /*
-    avl.deleteNode(60);
-    avl.breadthFirst(avl.getRoot());
-    avl.deleteNode(63);
-    avl.breadthFirst(avl.getRoot());
-    avl.deleteNode(70);
-    avl.breadthFirst(avl.getRoot());
-    avl.deleteNode(80);
-    avl.breadthFirst(avl.getRoot());
-    avl.deleteNode(90);
-    avl.breadthFirst(avl.getRoot());
-    */
 
     cout << endl;
 }

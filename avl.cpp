@@ -113,26 +113,11 @@ void AVL::rightRotation(Node* &someNode)
 
     if(aux == root)
     {
-        //cout << "ROOT\n";
         root = someNode;
         root->parent = NULL;
         someNode->parent = NULL;
         aux->parent = someNode; // set new parent for aux
 
-        // Debugging : remove
-        /*
-        if(root->left && root->right)
-            cout << "root = " << root->value << " left " << root->left->value << " right : " << root->right->value << endl;
-        if(root->left->left && root->right->right)
-            cout << "left left = " << root->left->left->value << " right right " << root->right->right->value << endl;
-        if(root->right->left)
-            cout << "right left: " << root->right->left->value << endl << endl;
-        if(root->left->parent && root->right->parent)
-            cout << "parent left : " << root->left->parent->value << "parent right : "
-                    << root->right->parent->value << endl;
-
-        cout << "After BIG CHANGE:\n";
-        */
         breadthFirst(root);
         cout << endl;
 
@@ -141,17 +126,11 @@ void AVL::rightRotation(Node* &someNode)
     {
         if(aux->parent->right == aux)
         {
-            //cout << "aux has a right parent which is :" << aux->parent->value << endl ;
-            //cout << "aux->parent->right" << aux->parent->right->value << endl ;
             aux->parent->right = someNode;
-            //cout << "after operation someNode has parent : " << someNode->parent->value << endl;
         }
         if(aux->parent->left == aux)
         {
-            //cout << "aux has a left parent which is :" << aux->parent->value << endl;
-            //cout << "aux->parent->left" << aux->parent->left->value << endl ;
             aux->parent->left = someNode;
-            //cout << "after operation someNode has parent : " << someNode->parent->value << endl;
         }
         aux->parent = someNode;
     }
@@ -194,15 +173,14 @@ void AVL::deleteNode(Interval val)
 
         if(root->left && root->right == NULL)
         {
-            cout << "Delete Root, case 1\n";
-
+            // Delete Root, case 1\n";
             p = root;
             root = root->left;
             delete p;
         }
         else if(root->right && root->left == NULL)
         {
-            cout << "Delete Root, case 2\n";
+            // Delete Root, case 2\n";
 
             p = root;
             root = root->right;
@@ -210,31 +188,25 @@ void AVL::deleteNode(Interval val)
         }
         else if(root->right == NULL  && root->left == NULL)
         {
-            cout << "Delete Root, case 3\n";
-            cout << "NULL TREE\n";
+            // "Delete Root, case 3\n";
+            // NULL TREE\n";
             delete root;
         }
         else
         {
-            cout << "Delete Root, case 4\n";
+            // Delete Root, case 4\n";
 
             p = root;
             p = p->right;
 
-            // Debugging: remove
-            p->value.printInterval();
-
             if(p->left) //p has at least one left son
             {
-                cout << "I HAVE A LEFT SON\n";
-
+                // There is A LEFT SON\n";
                 while(p->left)
                 {
                     p = p->left;
                     p->value.printInterval();
                 }
-                // Debugging: remove
-                cout << "Replace with " << p->value.printInterval();
 
                 root->value = p->value;
 
@@ -252,26 +224,24 @@ void AVL::deleteNode(Interval val)
                 }
                 delete p;
 
-                // Debugging: remove
-                cout << "Left son, BALANCE CHECK : " << balanceCheck->value.printInterval();
-
+                // Left son, BALANCE CHECK by balanceCheck->value.printInterval();
                 doRotations(balanceCheck,1);
 
             }
             else //p has no left son
             {
 
-                cout << "No Left Son, Replace with " << p->value.printInterval() << endl;
+                // No Left Son, Replace with "  p->value.printInterval() << endl;
                 root->value = p->value;
                 p->parent = NULL;
 
                 if(p->right)
                 {
-                    cout << "No Left son, in if statement" << endl;
+                    // No Left son, in if statement"
                     root->right = p->right;
                     p->right->parent = root;
-                    balanceCheck = root->right;
-                    cout << "No Left son, in if statement BALANCE CHECK :  " << balanceCheck->value.printInterval();
+                    // balanceCheck = root->right;
+                    // "No Left son, in if statement BALANCE CHECK :  " << balanceCheck->value.printInterval();
                 }
                 else
                 {
@@ -281,10 +251,11 @@ void AVL::deleteNode(Interval val)
 
                 delete p;
 
-                // Debugging: remove
-                cout << "No Left son, BALANCE CHECK :  " << balanceCheck->value.printInterval();
+                // No Left son, BALANCE CHECK :  " << balanceCheck->value.printInterval();
+                // Remove this in the future
                 if(balanceCheck->parent)
                     cout << "No Left son, BALANCE CHECK parent:  " << balanceCheck->parent->value.printInterval();
+
                 doRotations(balanceCheck,1);
             }
         }
@@ -292,9 +263,6 @@ void AVL::deleteNode(Interval val)
     else
     {
         p = findNode(val);
-
-        // Debugging: remove
-        cout << "value of the node to delete : " << p->value.printInterval() ;
 
         if(p->value.compareTo(val) == 0)
         {
@@ -306,20 +274,17 @@ void AVL::deleteNode(Interval val)
 
                 if(p->parent->right == p)
                 {
-                    // Debugging: remove
-                    cout << "NODE HAS LEFT SON ONLY CASE 1\n";
+                    // NODE HAS LEFT ONE SON ONLY CASE 1\n";
                     p = p->parent;
                     p->right = q;
                     q->parent = p;
                 }
                 else
                 {
-                    // Debugging: remove
-                    cout << "NODE HAS LEFT SON ONLY CASE 2\n";
+                    // NODE HAS LEFT ONE SON ONLY CASE 2\n";
                     r = p;
                     p = p->parent;
 
-                    cout << "p = " << p->value.printInterval() << " , q = " << q->value.printInterval() ;
                     p->left = q;
                     q->parent = p;
 
@@ -344,12 +309,10 @@ void AVL::deleteNode(Interval val)
                 }
                 else
                 {
-                    // Debugging: remove
-                    cout << "NODE HAS LEFT SON ONLY CASE 2\n";
+                    // NODE HAS LEFT SON ONLY CASE 2\n";
                     r = p;
                     p = p->parent;
-                    // Debugging: remove
-                    cout << "p = " << p->value.printInterval() << " , q = " << q->value.printInterval();
+
                     p->right = q;
                     q->parent = p;
 
@@ -358,9 +321,7 @@ void AVL::deleteNode(Interval val)
             }
             else if(p->right == NULL  && p->left == NULL)
             {
-                //Leaf
-                cout << "Left Case\n";
-
+                //Leaf : Left Case\n";
                 if(p->parent->right == p)
                 {
                     p->parent->right = NULL;
@@ -377,8 +338,6 @@ void AVL::deleteNode(Interval val)
             else
             {
                 //two sons: replace node with its inorder predecessor
-                cout << "two sons\n";
-
                 q = p;
                 q = p->right;
 
@@ -435,15 +394,13 @@ void AVL::doRotations(Node* &q,bool direction)
 {
     if(direction)  //a node was inserted/deleted in the left subtree, so we proceed with right rotations
     {
-
         while(q)
         {
-            //cout << "value : " << q->value.printInterval();
             if(height(q->left) - (height(q->right) )== 2 &&
                 ( (( height(q->left->left) - height(q->left->right) ) == 1) ||
                 (( height(q->left->left) - height(q->left->right) ) == 0 ) ))
             {
-                //cout << "Right Rotation for : " << q->value.printInterval();
+                // Right Rotation for : " << q->value.printInterval();
                 rightRotation(q);
                 break;
             }
@@ -451,8 +408,7 @@ void AVL::doRotations(Node* &q,bool direction)
             if(height(q->left) - (height(q->right) ) == -2 &&
                 ( height(q->right->left) - height(q->right->right)) == 1)
             {
-                //cout << "rightLeft Rotation for : " << q->value.printInterval();
-
+                // RightLeft Rotation for : " << q->value.printInterval();
                 Node* t = q->right;
                 rightLeftRotation(q);
                 break;
@@ -461,7 +417,7 @@ void AVL::doRotations(Node* &q,bool direction)
             q = q->parent;
         }
     }
-    else //a node was inserted/deleted in the right subtree, so we proceed with left rotations
+    else //A node was inserted/deleted in the right subtree, so we proceed with left rotations
     {
         while(q)
         {
@@ -469,7 +425,7 @@ void AVL::doRotations(Node* &q,bool direction)
                 (( height(q->right->left) - height(q->right->right) ) == -1 ||
                 ( height(q->right->left) - height(q->right->right)) == 0 ) )
             {
-                cout << "left rotation for " << q->value.printInterval();
+                // Left rotation for " << q->value.printInterval();
                 leftRotation(q);
                 break;
             }
@@ -477,7 +433,7 @@ void AVL::doRotations(Node* &q,bool direction)
             if((height(q->left) - height(q->right) )== 2 &&
                 ( height(q->left->left) - height(q->left->right)) == -1)
             {
-                cout << "LeftRight Rotation for : " << q->value.printInterval();
+                // LeftRight Rotation for : " << q->value.printInterval();
                 leftRightRotation(q);
                 break;
             }
@@ -491,7 +447,7 @@ void AVL::insertNode(Interval val)
 {
     Node* t;
     t = new Node(val);
-    cout << "INSERT NODE : " << val.printInterval() << endl ;
+    // INSERT NEW NODE : " Debug check:  val.printInterval()
 
     if(root)
     {
@@ -503,8 +459,7 @@ void AVL::insertNode(Interval val)
         while(p && !endLoop) //search for the right place to insert the node with the new value
         {
             q = p;
-            // compare value (consider insertion too)
-            // smaller
+            // compare value (consider insertion too where no rotations are involved)
             compVal = val.compareTo(p->value);
             switch(compVal)
             {
@@ -521,17 +476,15 @@ void AVL::insertNode(Interval val)
         }
 
         compVal = val.compareTo(q->value);
-        cout << "I got at the value : " << q->value.printInterval() << " , with compVale: "
-             << compVal << endl ;
+        // For Debugging Reasons:
+        //cout << "I got at the value : " << q->value.printInterval() << " , with compVale: "
+        //     << compVal << endl ;
         switch(compVal)
         {
             case -1:
             {
                 q->left = t; //insert node as the left leaf of q
                 t->parent = q;
-
-                //cout << "LAST TEST : \n";
-                //breadthFirst(this->root);
                 cout << endl;
                 doRotations(q,1);
                 break;
@@ -545,26 +498,23 @@ void AVL::insertNode(Interval val)
             }
             case 3:
             {
-                std::cout << "replace: "<<  q->value.low  << " with " << val.low   << std::endl;
                 q->value.high = val.high;
-                std::cout << "new value :" << q->value.printInterval() << std::endl;
                 break;
             }
             case 4:
             {
-                std::cout << "replace: "<<  q->value.high  << " with " << val.high   << std::endl;
                 q->value.low = val.low;
                 break;
             }
             case 5:
             {
-                std::cout << "replace: "<<  q->value.printInterval()  << " with " << val.printInterval()   << std::endl;
                 q->value.high = val.high;
                 q->value.low = val.low;
                 break;
             }
 
-             // I ignore so far case 0 (equality) and 2 (total inclusion), so I just don't insert them
+             // I ignore so far case 0 (equality) and 2 (total inclusion), so I just don't insert new intervals
+            // in these cases
         }
     }
     else
@@ -576,8 +526,9 @@ void AVL::inorder(Node* someNode)
     if(someNode)
     {
         inorder(someNode->left);
-        cout << someNode->value.printInterval() << " with Left and Right Depth of  : " << height(someNode->left)
-            << " , " << height(someNode->right) << endl;
+        // Printing values in increasing order, one can also look at the
+        // balance check of every node by: height(someNode->left) and height(someNode->right)
+        cout << someNode->value.printInterval() << endl;
 
         inorder(someNode->right);
     }
