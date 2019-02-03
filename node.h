@@ -60,7 +60,7 @@ struct Interval
             return 4;
         }
 
-        // check if the new interval can include the current terminal
+        // check if the new interval can include the current interval
         if(low < ob.low && high > ob.high)
         {
             return 5;
@@ -79,7 +79,6 @@ class Node
     public:
         Node(Interval val) : value(val)
         {
-            //value = val;
             left = right = parent = NULL;
             height = 0;
             lHeight = 0;
