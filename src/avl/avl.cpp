@@ -1,10 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <queue>
+#include <stack>
 #include <stdio.h>
 #include "avl.h"
 
 using namespace std;
+
 
 Node* AVL::findNode(Interval val)
 {
@@ -32,6 +34,7 @@ Node* AVL::findNode(Interval val)
     return someNode;
 }
 
+
 void AVL::breadthFirst(Node* someNode)
 {
     queue<Node*> q;
@@ -43,6 +46,7 @@ void AVL::breadthFirst(Node* someNode)
         q.pop();
         std::cout << someNode->value.printInterval();
 
+        // TODO: log all cout this information
         if(someNode->left != NULL && someNode->left->left == someNode)
             cout << "ERROR LEFT" << endl;
 
@@ -56,6 +60,7 @@ void AVL::breadthFirst(Node* someNode)
             q.push(someNode->right);
     }
 }
+
 
 void AVL::leftRotation(Node* &someNode)
 {
@@ -94,7 +99,6 @@ void AVL::leftRotation(Node* &someNode)
 
 void AVL::rightRotation(Node* &someNode)
 {
-
     Node* aux = someNode;
     someNode = someNode->left;
 
@@ -118,7 +122,8 @@ void AVL::rightRotation(Node* &someNode)
         someNode->parent = NULL;
         aux->parent = someNode; // set new parent for aux
 
-        breadthFirst(root);
+        // TODO: remove this in the future
+        //breadthFirst(root);
         cout << endl;
 
     }
@@ -531,5 +536,29 @@ void AVL::inorder(Node* someNode)
         cout << someNode->value.printInterval() << endl;
 
         inorder(someNode->right);
+    }
+}
+
+void AVL::getSortedListFromAvl(std::vector<Interval>& sortedList)
+{
+    std::stack<Node *> s;
+    Node *curr = this->getRoot();
+
+    while (curr != NULL || s.empty() == false)
+    {
+        /* Reach the left most Node of the
+           curr Node */
+        while (curr !=  NULL)
+        {
+            s.push(curr);
+            curr = curr->left;
+        }
+
+        /* Current must be NULL at this point */
+        curr = s.top();
+        s.pop();
+        sortedList.push_back(curr->value);
+
+        curr = curr->right;
     }
 }

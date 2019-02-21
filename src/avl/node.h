@@ -3,6 +3,17 @@
 
 #include <iostream>
 
+/*! @brief Interval class which holds the information about a closed interval. It
+           checks for the following cases:
+           1. Full inclusion: the interval to be added is already included in other interval, in this case no new
+              node is added.
+           2. Partial inclusion: where the high of the other object becomes high of the current one
+                    Ex: compare [14,23] (to insert) to [2,19] (existing) which must be merged to [2,23]
+           3. Partial inclusion where the low of the other object becomes low of the current one
+                    Ex: compare [8,18] (existing) to [6,15] (to insert) to  which must be merged to [6,18]
+           4. The new interval can include the current interval.
+                    Ex: [1,24] (to insert) includes [2, 23], so [2, 23] is replaced by [1,24]
+*/
 struct Interval
 {
     int low;
@@ -73,7 +84,10 @@ struct Interval
 
 };
 
-
+/*! @brief Node class used to hold the information of  an AVLTree. This information is the
+ *         typical information used for BST trees, to which height, left and right
+ *         height are added.
+*/
 class Node
 {
     public:
@@ -84,8 +98,6 @@ class Node
             lHeight = 0;
             rHeight = 0;
         }
-
-        int getBalanceFactor(){return rHeight  - lHeight;}
 
         Node* left;
         Node* right;
