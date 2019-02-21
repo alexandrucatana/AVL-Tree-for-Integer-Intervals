@@ -103,6 +103,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac50e6d4679ec3c3132c0716499975b05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classNode.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAVL.html#ac50e6d4679ec3c3132c0716499975b05">findNode</a> (<a class="el" href="structInterval.html">Interval</a> val)</td></tr>
 <tr class="memdesc:ac50e6d4679ec3c3132c0716499975b05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds <a class="el" href="classNode.html" title="Node class used to hold the information of an AVLTree. This information is the typical information us...">Node</a> by value, searching in an <a class="el" href="classAVL.html" title="AVL class used for building an AVL (Adelson-Velsky and Landis) Tree. The node values in this particul...">AVL</a> Tree is the same as that in Binary Search Tree: the key in each node must be greater than or equal to any key stored in the left sub-tree, and less than or equal to any key stored in the right sub-tree.  <a href="#ac50e6d4679ec3c3132c0716499975b05">More...</a><br /></td></tr>
 <tr class="separator:ac50e6d4679ec3c3132c0716499975b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85e62f7a85a8c491d2297653056a13a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAVL.html#a85e62f7a85a8c491d2297653056a13a4">getSortedListFromAvl</a> (std::vector&lt; <a class="el" href="structInterval.html">Interval</a> &gt; &amp;sortedList)</td></tr>
+<tr class="memdesc:a85e62f7a85a8c491d2297653056a13a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a sorted list from the <a class="el" href="classAVL.html" title="AVL class used for building an AVL (Adelson-Velsky and Landis) Tree. The node values in this particul...">AVL</a> tree by traversing the the tree in inorder.  <a href="#a85e62f7a85a8c491d2297653056a13a4">More...</a><br /></td></tr>
+<tr class="separator:a85e62f7a85a8c491d2297653056a13a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -342,6 +345,32 @@ Private Attributes</h2></td></tr>
 
 <p>getRoot </p>
 <dl class="section return"><dt>Returns</dt><dd>the root of the <a class="el" href="classAVL.html" title="AVL class used for building an AVL (Adelson-Velsky and Landis) Tree. The node values in this particul...">AVL</a> tree. </dd></dl>
+
+</div>
+</div>
+<a id="a85e62f7a85a8c491d2297653056a13a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85e62f7a85a8c491d2297653056a13a4">&#9670;&nbsp;</a></span>getSortedListFromAvl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AVL::getSortedListFromAvl </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structInterval.html">Interval</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>sortedList</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Provides a sorted list from the <a class="el" href="classAVL.html" title="AVL class used for building an AVL (Adelson-Velsky and Landis) Tree. The node values in this particul...">AVL</a> tree by traversing the the tree in inorder. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Output</td><td>the resulted sorted list </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
