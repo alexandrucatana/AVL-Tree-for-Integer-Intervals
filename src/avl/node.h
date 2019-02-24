@@ -2,6 +2,7 @@
 #define NODE_H
 
 #include <iostream>
+#include <string>
 
 /*! @brief Interval class which holds the information about a closed interval. It
            checks for the following cases:

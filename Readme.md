@@ -40,4 +40,5 @@
 		  a. The MergingIntervals/src/MergingIntervalsProject main application binary file 
 		  b. The MergingIntervals/test/test_intervals_with_avl test binary file
 
-	
+	knvkw01@uni-tuebingen.de
+	m3rA_@mA

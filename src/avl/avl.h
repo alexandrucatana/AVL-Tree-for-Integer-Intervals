@@ -2,6 +2,7 @@
 #define AVL_H
 
 #include "node.h"
+#include <vector>
 
 
 /*! @brief AVL class used for building an AVL (Adelson-Velsky and Landis) Tree.
