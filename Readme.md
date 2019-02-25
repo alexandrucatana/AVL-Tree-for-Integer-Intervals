@@ -28,17 +28,19 @@
 		MergingIntervals/test/test_avl_merging_intervals.cpp which can of course be extended with other
 		tests.
         
-3.  Build Steps:
+3.  Build Steps (tested already in Mac Os, Ubuntu and Windows 7 with Visual Studio Express Edition 2015)
 
-	1. Run the main CMakeLists.txt found in the MergingIntervals folder:
+	1. For both Unix OS-es and Windows run the main CMakeLists.txt found in the MergingIntervals folder:
 	
 			cmake CMakeLists.txt
 			
-	2. Run: make 
+	2. 
+		
+		a. For Unix: Run: make 
 	
-		This will create:
-		  a. The MergingIntervals/src/MergingIntervalsProject main application binary file 
-		  b. The MergingIntervals/test/test_intervals_with_avl test binary file
-
-	knvkw01@uni-tuebingen.de
-	m3rA_@mA
+			This will create:
+			  a. The MergingIntervals/src/MergingIntervalsProject main application binary file 
+			  b. The MergingIntervals/test/test_intervals_with_avl test binary file
+			  
+		b. For Windows: Because of Catch Library, the project Visual Studio 2015 or higher version.
+		   CMake will create MergingIntervals.sln which one can open in Visual Studio.
