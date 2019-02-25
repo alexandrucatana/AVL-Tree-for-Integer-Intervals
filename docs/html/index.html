@@ -77,11 +77,13 @@ $(function() {
 <li>Testing of the merging intervals with <a class="el" href="classAVL.html" title="AVL class used for building an AVL (Adelson-Velsky and Landis) Tree. The node values in this particul...">AVL</a> is done with the Catch Library and are provided in MergingIntervals/test/test_avl_merging_intervals.cpp which can of course be extended with other tests.</li>
 </ol>
 <ol type="1">
-<li>Build Steps:<ol type="a">
-<li>Run the main CMakeLists.txt found in the MergingIntervals folder: <pre class="fragment"> cmake CMakeLists.txt
+<li>Build Steps (tested already in Mac Os, Ubuntu and Windows 7 with Visual Studio Express Edition 2015)<ol type="a">
+<li>For both Unix OS-es and Windows run the main CMakeLists.txt found in the MergingIntervals folder: <pre class="fragment"> cmake CMakeLists.txt
 </pre></li>
-<li><p class="startli">Run: make</p>
-<p class="startli">This will create: a. The MergingIntervals/src/MergingIntervalsProject main application binary file b. The MergingIntervals/test/test_intervals_with_avl test binary file </p>
+<li><p class="startli">a. For Unix: Run: make </p><pre class="fragment">This will create:
+  a. The MergingIntervals/src/MergingIntervalsProject main application binary file 
+  b. The MergingIntervals/test/test_intervals_with_avl test binary file
+</pre><p class="startli">b. For Windows: Because of Catch Library, the project Visual Studio 2015 or higher version. CMake will create MergingIntervals.sln which one can open in Visual Studio. </p>
 </li>
 </ol>
 </li>
