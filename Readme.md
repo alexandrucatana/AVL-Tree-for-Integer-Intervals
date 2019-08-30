@@ -1,4 +1,4 @@
-1.  This is an implementation of an AVL Tree having as nodes values closed integer intervals of the form
+1.  This is an implementation of an AVL Tree having as node values closed integer intervals of the form
     [4, 16], where 4 is the left-bounded value and 16 is right-bounded value. 
     For simplicity, I call these values low and high. 
 
